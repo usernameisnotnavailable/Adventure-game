@@ -205,7 +205,7 @@ public static void main(String[] args) {
       /***********************************************************Inicializó rész vége*************************************************************/
        /***********************************************************Inicializó rész vége*************************************************************/
         /***********************************************************Inicializó rész vége*************************************************************/
-    Player jatekos = new Player("name", 50, 10, playerWeapon[playerWeaponInt], playerShield[playerShieldInt], spell[spellLevel]);
+    Player jatekos = new Player("name", 50, 10, 0, playerWeapon[playerWeaponInt], playerShield[playerShieldInt], spell[spellLevel]);
 
     locations[10][10] = 0;
     locations[10][11] = 5;
@@ -249,12 +249,9 @@ public static void main(String[] args) {
         /* Kis térkép megjelenítése */
         showMiniMap(playerMap); 
         
-
         System.out.println("\nmerre mesz?");
         /* Lehetőségek megmutatása */
         showMoveOptions(positionHorizontal, positionVertical, locations);
-
-        /* Kell térkép nagyban, statok mutatása */
 
         /* Felhasználó döntés */
         userChoice = scan.nextInt();
@@ -264,7 +261,7 @@ public static void main(String[] args) {
         positionHorizontal = playerMoveChoice[1];
         /* ellenőrzi, hogy fal van e az újpozícioónál és visszaadja a karaktereket */
         wallOrPath = returnWallOrPath(positionHorizontal, positionVertical, locations);
-        /*Itt hívja meg az eseményt */
+        /*Itt hívja meg az eseményeket */
         switch (locations[positionVertical][positionHorizontal]) {
             case 2: randomTrap(jatekos, minionWeapon, minionShield, bossWeapon, bossShield);
                     locations[positionVertical][positionHorizontal] = 0;
@@ -286,36 +283,6 @@ public static void main(String[] args) {
         playerMap = updatePlayerMap(wallOrPath, playerMap, positionVertical, positionHorizontal);
 
     }
-
-    
-                                  /***************** Ez kerül majd az ajándék vagy a bolt szekcióhoz **************************/ 
-                    /*
-                       switch (diceRoll()) {
-                                case 1: System.out.println("Uj eletero potit kaptal");
-                                        healthPotionNumber += 1;
-                                        break;
-                                case 2: System.out.println("Uj pajzsot kaptal");
-                                        playerShieldInt += 1;
-                                        jatekos.setShield(playerShieldInt, playerShield[playerShieldInt]);
-                                        break;
-                                case 3: System.out.println("Uj fegyvert kaptal");;
-                                        playerWeaponInt += 1;
-                                        jatekos.setWeapon(playerWeaponInt, playerWeapon[playerWeaponInt]);
-                                        break;
-                                case 4: System.out.println("Uj eletero potit kaptal");
-                                        healthPotionNumber += 1;
-                                        break;
-                                case 5: System.out.println("Uj mana potit kaptal");
-                                        manaPotionNumber += 1;
-                                        break;
-                                case 6: System.out.println("Uj eletero-, mana- potit és varazslatot kaptal");
-                                        spellLevel += 1;
-                                        jatekos.setSpell(spell[spellLevel]);
-                                        break;
-                                default: System.out.println("Ennek nem igy kell lennie");
-                                        break;
-
-     } */
 
     scan.close();
     }   
@@ -588,9 +555,11 @@ public static void randomTrap(Player jatekos, Weapon[] minionWeapon, Shield[] mi
     switch (randomNumber14()) {
         case 1: minionWeaponDamageUpgrade(minionWeapon);
                 minionShieldDefenseUpgrade(minionShield);
+                System.out.println("Hatalmas kurtszolam razza meg a barlang falait, biztos lehetsz benne, hogy adazabb ellenfelekkel kell mostantol szembenezned");
                 break;
         case 2: bossWeaponDamageUpgrade(bossWeapon);
                 bossShieldDefenseUpgrade(bossShield);
+                System.out.println("A barlang falai sejtelmesen homalyosak lettek, melyroljovo dobok hangjatol remegnek csontjaid, az ellenfeleid keszen allnak.");
                 break;
         case 3: jatekos.setHp(jatekos.getHp() - temp);
                 System.out.println("Sajnos csapdaba leptel mely " + temp + " sebzest okozott neked");
@@ -611,6 +580,7 @@ public static void randomGift(Player jatekos, Weapon[] playerWeapon, Shield[] pl
         
     }
 }
+
 
 /***********************************************************Harc*************************************************************/
 /***********************************************************Harc*************************************************************/

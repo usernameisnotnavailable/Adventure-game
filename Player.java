@@ -3,13 +3,15 @@ public class Player {
     private String name;
     private int hp;
     private int mana;
+    private int gold;
     private Spell spell;
     private Weapon playerWeapon;
     private Shield playerShield;
 
-    public Player(String name, int hp, int mana, Weapon playerWeapon, Shield playerShield, Spell spell) {
+    public Player(String name, int hp, int mana, int gold, Weapon playerWeapon, Shield playerShield, Spell spell) {
         this.name = name;
         this.hp = hp;
+        thi.gold = gold;
         this.spell = spell;
         this.playerWeapon = playerWeapon;
         this.playerShield = playerShield;
@@ -19,6 +21,7 @@ public class Player {
         this.name = source.name;
         this.hp = source.hp;
         this.mana = source.mana;
+        this.gold = source.gold;
         this.spell = source.spell;
         this.playerWeapon = source.playerWeapon;
         this.playerShield = source.playerShield;
@@ -41,6 +44,15 @@ public class Player {
     public void setMana(int mana) {
         this.mana = mana;
     }
+
+    public int getGold(){
+        return gold;
+    }
+
+    public void setGold(int gold){
+        this.gold = gold;
+    }
+
 
     public Spell getSpell(){
         return this.spell;
@@ -68,6 +80,7 @@ public class Player {
     public String toString(){
         return "Jatekos neve: " + this.name + ".\n" 
         + "Jatekos eletero: " + this.hp + ".\n"
+        + "Jatekos aranya: " + this.gold + ".\n"
         + "Jatekos mana: " + this.mana + ".\n"
         + "Jatekos felszereles: \n" 
         + this.playerWeapon
