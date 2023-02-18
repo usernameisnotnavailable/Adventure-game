@@ -11,7 +11,7 @@ public class Player {
     public Player(String name, int hp, int mana, int gold, Weapon playerWeapon, Shield playerShield, Spell spell) {
         this.name = name;
         this.hp = hp;
-        thi.gold = gold;
+        this.gold = gold;
         this.spell = spell;
         this.playerWeapon = playerWeapon;
         this.playerShield = playerShield;
