@@ -1,6 +1,6 @@
 public class Minion {
 
-    private String name;
+    private final String name;
     private int hp;
     private Weapon minionWeapon;
     private Shield minionShield;
